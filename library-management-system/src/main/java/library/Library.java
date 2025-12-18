@@ -125,6 +125,25 @@ public class Library {
         }
         return result;
     }
+    public boolean updateBook(int id, Book newData) {
+        Book book = findBookById(id);
+        if (book != null) {
+            operationLog.addEntry(OperationLog.OperationType.ADD_BOOK,
+                    "Обновлена книга: " + book.getTitle());
+            return true;
+        }
+        return false;
+    }
+    public boolean removeBook(int id) {
+        Book book = findBookById(id);
+        if (book != null) {
+            books.remove(book);
+            operationLog.addEntry(OperationLog.OperationType.ADD_BOOK,
+                    "Удалена книга: " + book.getTitle());
+            return true;
+        }
+        return false;
+    }
 
     public void printOperationLog() {
         operationLog.print();
