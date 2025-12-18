@@ -144,6 +144,16 @@ public class Library {
         }
         return false;
     }
+    public String getStatistics() {
+        int total = books.size();
+        int available = getAvailableBooks().size();
+        int borrowed = total - available;
+        
+        return String.format("Статистика библиотеки:\n" +
+                "Всего книг: %d\n" +
+                "Доступно: %d\n" +
+                "Выдано: %d", total, available, borrowed);
+    }
 
     public void printOperationLog() {
         operationLog.print();
